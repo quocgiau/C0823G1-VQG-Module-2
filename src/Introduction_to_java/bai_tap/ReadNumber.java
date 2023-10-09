@@ -9,7 +9,7 @@ public class ReadNumber {
         System.out.println("Nhập số cần đọc: ");
         int number = Integer.parseInt(scanner.nextLine());
         String word = "";
-        if (number < 0 || number >= 999) {
+        if (number < 0 || number > 999) {
             word = "out of ability";
         } else if (number == 0) {
             word = "Zero";
