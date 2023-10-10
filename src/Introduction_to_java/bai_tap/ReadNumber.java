@@ -46,6 +46,9 @@ public class ReadNumber {
                     word += "Nine hundred ";
                     break;
             }
+            if (hundreds != 0 && ones != 0){
+                word += "end ";
+            }
             if (tens == 1) {
                 switch (ones) {
                     case 0:
