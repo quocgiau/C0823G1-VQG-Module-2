@@ -1,8 +1,8 @@
-package mang_va_phuong_thuc_trong_java.bai_tap;
+package mang_va_phuong_thuc_trong_java.bai_tap.bai3;
 
 import java.util.Arrays;
 import java.util.Scanner;
-
+// Gộp mảng
 public class Combine {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

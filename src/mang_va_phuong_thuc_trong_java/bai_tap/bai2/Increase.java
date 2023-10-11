@@ -1,12 +1,13 @@
-package mang_va_phuong_thuc_trong_java.bai_tap;
+package mang_va_phuong_thuc_trong_java.bai_tap.bai2;
 
 import java.util.Arrays;
 import java.util.Scanner;
-
+// Thêm phần tử vào mảng
 public class Increase {
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 4, 5, 6};
         Scanner scanner = new Scanner(System.in);
+        int[] arr = {1, 2, 3, 4, 5, 6};
+        int[] newArr = new int[arr.length + 1];
         System.out.println("Nhập phần tử cần chèn: ");
         int number = scanner.nextInt();
         System.out.println("Nhập vị trí bạn muốn chèn vào mảng");
@@ -14,7 +15,6 @@ public class Increase {
         if (index <= -1 || index >= arr.length - 1) {
             System.out.println("Không thể chèn phần tử vào mảng");
         } else {
-            int[] newArr = new int[arr.length + 1];
             for (int i = 0; i < index; i++) {
                 newArr[i] = arr[i];
             }
