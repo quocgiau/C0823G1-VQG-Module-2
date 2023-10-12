@@ -21,11 +21,7 @@ public class Main {
         System.out.println("Nhập cột bạn muốn tính");
         int findColumn = scanner.nextInt();
         for (int i = 0; i < arr2d.length; i++) {
-            for (int j = 0; j < arr2d[i].length; j++) {
-                if (j == findColumn) {
-                    sum += arr2d[i][findColumn];
-                }
-            }
+            sum += arr2d[i][findColumn];
         }
         System.out.println("Tổng ở cột " + findColumn + " là: " + sum);
     }

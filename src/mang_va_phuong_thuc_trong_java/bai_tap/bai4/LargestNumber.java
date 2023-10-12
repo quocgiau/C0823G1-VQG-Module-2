@@ -21,7 +21,7 @@ public class LargestNumber {
     }
 
     public static int maxNumber(int[][] arr2d) {
-        int max = 0;
+        int max = arr2d[0][0];
         for (int i = 0; i < arr2d.length; i++) {
             for (int j = 0; j < arr2d[i].length; j++) {
                 if (arr2d[i][j] > max) {
