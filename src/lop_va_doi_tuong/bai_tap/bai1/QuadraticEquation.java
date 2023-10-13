@@ -62,7 +62,4 @@ public class QuadraticEquation {
         return ((-this.b - Math.sqrt(getDiscriminant())) / (2 * this.a));
     }
 
-    public double getRoot() {
-        return -this.b / (2 * this.a);
-    }
 }

@@ -17,7 +17,7 @@ public class Test {
             if (exp.getDiscriminant() > 0) {
                 System.out.println("Phương trình có 2 nghiệm là: x1 = " + exp.getRoot1() + " x2 = " + exp.getRoot2());
             } else if (exp.getDiscriminant() == 0) {
-                System.out.println("Phương trình có nghiệm kép x = " + exp.getRoot());
+                System.out.println("Phương trình có nghiệm kép x = " + exp.getRoot1());
             } else {
                 System.out.println("Phương trình vô nghiệm");
             }
