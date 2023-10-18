@@ -3,7 +3,6 @@ package Ke_thua_da_hinh.bai_tap.bai1;
 public class Circle {
     private double radius;
     private String color;
-    public double acreage;
 
     public Circle() {
     }
@@ -11,7 +10,6 @@ public class Circle {
     public Circle(double radius, String color) {
         this.radius = radius;
         this.color = color;
-        this.acreage = Math.pow(getRadius(), 2) * Math.PI;
     }
 
     public double getRadius() {
@@ -29,13 +27,16 @@ public class Circle {
     public void setColor(String color) {
         this.color = color;
     }
+    public double getAcreage(){
+        return Math.pow(getRadius(), 2) * Math.PI;
+    }
 
     @Override
     public String toString() {
         return "Circle{" +
                 "Bán kính = " + radius +
                 ", Màu = '" + color + '\'' +
-                ", Diện tích = " + acreage +
+                ", Diện tích = " + getAcreage() +
                 '}';
     }
 }

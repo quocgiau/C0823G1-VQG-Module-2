@@ -12,7 +12,7 @@ public class Cylinder extends Circle {
     }
 
     public double getVolume() {
-        return acreage * height;
+        return super.getAcreage() * height;
     }
 
     @Override
