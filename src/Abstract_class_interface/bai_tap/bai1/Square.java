@@ -1,47 +1,46 @@
 package Abstract_class_interface.bai_tap.bai1;
 
 
-public class Square extends Shape implements Resizeable {
-    private double edges = 1.0;
-
+public class Square extends Rectangle implements Resizeable {
     public Square() {
     }
 
-    public Square(double edges) {
-        this.edges = edges;
+    public Square(double side) {
+        super(side, side);
     }
 
-    public Square(String color, boolean filled, double edges) {
-        super(color, filled);
-        this.edges = edges;
+    public Square(double side, String color, boolean filled) {
+        super(side, side, color, filled);
     }
 
-    public double getEdges() {
-        return edges;
+    public void setSide(double side) {
+        this.setWidth(side);
+        this.setLength(side);
     }
 
-    public void setEdges(double edges) {
-        this.edges = edges;
+    public double getSide() {
+        return getWidth();
     }
 
     public double getArea() {
-        return Math.pow(getEdges(), 2);
+        return Math.pow(getSide(), 2);
     }
 
     public double getPerimeter() {
-        return getEdges() * 4;
+        return getSide() * 4;
     }
 
     @Override
     public String toString() {
         return "Hình vuông có cạnh = "
-                + getEdges()
+                + getSide()
                 + " Diện tích = " + getArea();
     }
 
     @Override
     public void resize(double percent) {
-        this.setEdges(this.edges += percent);
+        double count = getSide() + percent;
+        this.setSide(count);
     }
 
 }
