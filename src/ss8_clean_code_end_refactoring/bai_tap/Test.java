@@ -4,7 +4,7 @@ public class Test {
     public static void main(String[] args) {
         TennisGame tennisGame = new TennisGame();
         String tennisGame1 = TennisGame.getScore("cuong", "giau", 3, 5);
-        String tennisGame2 = TennisGame.getScore("cuong", "giau", 1, 2);
+        String tennisGame2 = TennisGame.getScore("cuong", "giau", 1, 1);
         String tennisGame3 = TennisGame.getScore("cuong", "giau", 3, 1);
         System.out.println(tennisGame1);
         System.out.println(tennisGame2);

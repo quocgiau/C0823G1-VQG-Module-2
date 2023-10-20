@@ -2,6 +2,14 @@ package ss8_clean_code_end_refactoring.bai_tap;
 
 public class TennisGame {
     private static final String ALL = "-All";
+    private static final String LOVE = "love";
+    private static final String FIFTEEN = "Fifteen";
+    private static final String THIRTY = "Thirty";
+    private static final String FORTY = "Forty";
+    private static final int ZERO = 0;
+    private static final int ONE = 1;
+    private static final int TWO = 2;
+    private static final int THREE = 3;
 
     public static String getScore(String player1Name, String player2Name, int goalScorer1, int goalScorer2) {
         String score = "";
@@ -24,17 +32,17 @@ public class TennisGame {
                 tempScore = goalScorer2;
             }
             switch (tempScore) {
-                case 0:
-                    score += "Love";
+                case ZERO:
+                    score += LOVE;
                     break;
-                case 1:
-                    score += "Fifteen";
+                case ONE:
+                    score += FIFTEEN;
                     break;
-                case 2:
-                    score += "Thirty";
+                case TWO:
+                    score += THIRTY;
                     break;
-                case 3:
-                    score += "Forty";
+                case THREE:
+                    score += FORTY;
                     break;
             }
         }
@@ -44,17 +52,17 @@ public class TennisGame {
     private static String getString(int goalScorer1) {
         String score;
         switch (goalScorer1) {
-            case 0:
-                score = "Love" + ALL;
+            case ZERO:
+                score = LOVE + ALL;
                 break;
-            case 1:
-                score = "Fifteen" + ALL;
+            case ONE:
+                score = FIFTEEN + ALL;
                 break;
-            case 2:
-                score = "Thirty" + ALL;
+            case TWO:
+                score = THIRTY + ALL;
                 break;
-            case 3:
-                score = "Forty" + ALL;
+            case THREE:
+                score = FORTY + ALL;
                 break;
             default:
                 score = "Deuce";
