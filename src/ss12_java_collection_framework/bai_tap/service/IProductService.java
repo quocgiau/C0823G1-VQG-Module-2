@@ -1,2 +1,13 @@
-package ss12_java_collection_framework.bai_tap.service;public interface IProductService {
+package ss12_java_collection_framework.bai_tap.service;
+
+import ss12_java_collection_framework.bai_tap.model.Product;
+
+public interface IProductService {
+    void showProduct();
+    void add(Product product);
+    void delete(int id);
+    void edit(int id, Product product);
+    void search(String name);
+//    void sortUp();
+//    void sortDown();
 }
