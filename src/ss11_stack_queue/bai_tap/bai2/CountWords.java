@@ -13,9 +13,10 @@ public class CountWords {
         String[] arr = text.split("[\\s\\p{Punct}]+"); // Tách các từ trong văn bản bằng khoảng trắng và dấu câu.
 //        System.out.println(Arrays.toString(arr));
         TreeMap<String, Integer> stringTreeMap = new TreeMap<>();
+        int count;
         for (String word : arr) {
             if (stringTreeMap.containsKey(word)) {
-                int count = stringTreeMap.get(word);
+                count = stringTreeMap.get(word);
                 stringTreeMap.put(word, count + 1);
             } else {
                 stringTreeMap.put(word, 1);
