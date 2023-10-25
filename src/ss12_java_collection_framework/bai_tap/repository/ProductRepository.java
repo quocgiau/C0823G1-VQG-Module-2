@@ -16,14 +16,8 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
-    public void showProduct() {
-        if (productList.isEmpty()) {
-            System.out.println("Danh sách trống");
-        } else {
-            for (Product product : productList) {
-                System.out.println(product);
-            }
-        }
+    public List<Product> getAll() {
+        return productList;
     }
 
     @Override
@@ -37,9 +31,6 @@ public class ProductRepository implements IProductRepository {
             if (product.getId() == id) {
                 productList.remove(product);
                 break;
-            } else {
-                System.out.println("Không tìm thấy Id để xóa.");
-                break;
             }
         }
     }
@@ -50,9 +41,6 @@ public class ProductRepository implements IProductRepository {
             if (product1.getId() == id) {
                 product1.setName(product.getName());
                 product1.setMoney(product.getMoney());
-                break;
-            } else {
-                System.out.println("Không tìm thấy Id cần sửa.");
                 break;
             }
         }

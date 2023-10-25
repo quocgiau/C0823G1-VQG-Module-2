@@ -4,12 +4,14 @@ import ss12_java_collection_framework.bai_tap.model.Product;
 import ss12_java_collection_framework.bai_tap.repository.IProductRepository;
 import ss12_java_collection_framework.bai_tap.repository.ProductRepository;
 
+import java.util.List;
+
 public class ProductService implements IProductService {
     private final IProductRepository productRepository = new ProductRepository();
 
     @Override
-    public void showProduct() {
-        productRepository.showProduct();
+    public List<Product> getAll() {
+        return productRepository.getAll();
     }
 
     @Override

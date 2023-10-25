@@ -4,6 +4,7 @@ import ss12_java_collection_framework.bai_tap.controller.IProductController;
 import ss12_java_collection_framework.bai_tap.controller.ProductController;
 import ss12_java_collection_framework.bai_tap.model.Product;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class ProductManager {
@@ -16,10 +17,11 @@ public class ProductManager {
                 "3. Xoá sản phẩm theo id\n" +
                 "4. Hiển thị danh sách sản phẩm\n" +
                 "5. Tìm kiếm sản phẩm theo tên\n" +
-                "6. Sắp xếp sản phẩm tăng dần, giảm dần theo giá" +
+                "6. Sắp xếp sản phẩm tăng dần, giảm dần theo giá\n" +
                 "7. Thoát chương trình");
     }
-//public void sort(){
+
+    //public void sort(){
 //    System.out.println("1. Sắp xếp tăng dần");
 //    System.out.println("2. Sắp xếp giảm dần");
 //    System.out.println("3. Thoát");
@@ -59,7 +61,7 @@ public class ProductManager {
                     iProductController.delete(deleteProduct());
                     break;
                 case 4:
-                    iProductController.showProduct();
+                    displayProduct();
                     break;
                 case 5:
                     iProductController.search(searchProduct());
@@ -68,6 +70,7 @@ public class ProductManager {
 //                    runSort();
                     break;
                 case 7:
+                    System.out.println("Hẹn gặp lại");
                     System.exit(7);
                 default:
                     System.out.println("Vui lòng nhập trong danh sách");
@@ -76,8 +79,7 @@ public class ProductManager {
     }
 
     public Product addProduct() {
-        System.out.println("Nhập Id sản phẩm");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id = checkIdAddProduct();
         System.out.println("Nhập tên sản phẩm");
         String name = scanner.nextLine();
         System.out.println("Nhập giá tiền");
@@ -86,9 +88,19 @@ public class ProductManager {
         return product;
     }
 
+    public void displayProduct() {
+        List<Product> productList = iProductController.getAll();
+        if (productList.isEmpty()) {
+            System.out.println("Danh sách trống");
+        } else {
+            for (Product product : productList) {
+                System.out.println(product);
+            }
+        }
+    }
+
     public void editProduct() {
-        System.out.println("Nhập Id sản phẩm cần sửa");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id = checkIdProduct("muốn sửa");
         System.out.println("Nhập tên sản phẩm cần sửa");
         String name = scanner.nextLine();
         System.out.println("Nhập giá tiền cần sửa");
@@ -98,9 +110,65 @@ public class ProductManager {
     }
 
     public int deleteProduct() {
-        System.out.println("Nhập Id muốn xóa");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id = checkIdProduct("muốn xóa");
+        System.out.println("Bạn có muốn xóa k ? y/n");
+        if (confirm()) {
+            return id;
+        } else {
+            System.out.println("Bạn không xóa");
+        }
         return id;
+    }
+
+    public int checkIdAddProduct() {
+        List<Product> productList = iProductController.getAll();
+        int id;
+        int count;
+        System.out.println("Nhập Id muốn thêm");
+        do {
+            count = 0;
+            id = Integer.parseInt(scanner.nextLine());
+            for (Product product : productList) {
+                if (product.getId() == id) {
+                    count++;
+                }
+            }
+            if (count == 0) {
+                return id;
+            } else {
+                System.out.println("ID đã tồn tại");
+            }
+        } while (true);
+    }
+
+    public int checkIdProduct(String text) {
+        List<Product> productList = iProductController.getAll();
+        int id;
+        int count;
+        System.out.println("Nhập Id " + text);
+        do {
+            count = 0;
+            id = Integer.parseInt(scanner.nextLine());
+            for (Product product : productList) {
+                if (product.getId() == id) {
+                    count++;
+                }
+            }
+            if (count == 1) {
+                return id;
+            } else {
+                System.out.println("ID không tồn tại");
+            }
+        } while (true);
+    }
+
+    public boolean confirm() {
+        String confirm = scanner.nextLine();
+        if (confirm.equalsIgnoreCase("y")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public String searchProduct() {
