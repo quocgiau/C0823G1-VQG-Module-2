@@ -30,8 +30,8 @@ public class ProductController implements IProductController {
     }
 
     @Override
-    public void search(String name) {
-        iProductService.search(name);
+    public List<Product> search(String name) {
+        return iProductService.search(name);
     }
 
 //    @Override

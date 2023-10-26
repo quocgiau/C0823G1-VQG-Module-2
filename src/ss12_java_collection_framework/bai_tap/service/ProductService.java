@@ -30,8 +30,8 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public void search(String name) {
-        productRepository.search(name);
+    public List<Product> search(String name) {
+        return productRepository.search(name);
     }
 
 //    @Override

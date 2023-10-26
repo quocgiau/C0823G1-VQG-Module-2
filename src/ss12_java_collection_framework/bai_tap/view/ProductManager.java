@@ -64,7 +64,7 @@ public class ProductManager {
                     displayProduct();
                     break;
                 case 5:
-                    iProductController.search(searchProduct());
+                    searchProduct();
                     break;
                 case 6:
 //                    runSort();
@@ -171,9 +171,15 @@ public class ProductManager {
         }
     }
 
-    public String searchProduct() {
+    public void searchProduct() {
+        List<Product> productList = iProductController.getAll();
         System.out.println("Nhập tên muốn tìm");
         String name = scanner.nextLine();
-        return name;
+        for (Product product : productList) {
+            if (product.getName().contains(name)) {
+                System.out.println("Thông tin sản phẩm bạn cần tìm là: ");
+                System.out.println(product);
+            }
+        }
     }
 }

@@ -9,10 +9,10 @@ public class ProductRepository implements IProductRepository {
     private static List<Product> productList = new ArrayList<>();
 
     static {
-        productList.add(new Product(1, "Giàu", 5));
-        productList.add(new Product(2, "Abc", 2));
-        productList.add(new Product(3, "Abcd", 3));
-        productList.add(new Product(4, "Abbb", 4));
+        productList.add(new Product(1, "chocolate", 5));
+        productList.add(new Product(2, "cookies", 2));
+        productList.add(new Product(3, "candy", 3));
+        productList.add(new Product(4, "cream", 4));
     }
 
     @Override
@@ -47,12 +47,8 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
-    public void search(String name) {
-        for (Product product : productList) {
-            if (product.getName().contains(name)) {
-                System.out.println(product);
-            }
-        }
+    public List<Product> search(String name) {
+        return productList;
     }
 
 //    @Override

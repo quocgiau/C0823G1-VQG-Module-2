@@ -13,7 +13,7 @@ public interface IProductRepository {
 
     void edit(int id, Product product);
 
-    void search(String name);
+    List<Product> search(String name);
 //    void sortUp();
 //    void sortDown();
 }
