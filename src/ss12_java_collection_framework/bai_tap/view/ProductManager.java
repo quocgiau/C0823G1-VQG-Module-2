@@ -1,6 +1,5 @@
 package ss12_java_collection_framework.bai_tap.view;
 
-import ss12_java_collection_framework.bai_tap.controller.IProductController;
 import ss12_java_collection_framework.bai_tap.controller.ProductController;
 import ss12_java_collection_framework.bai_tap.model.Product;
 
@@ -9,7 +8,7 @@ import java.util.Scanner;
 
 public class ProductManager {
     private final Scanner scanner = new Scanner(System.in);
-    private final IProductController iProductController = new ProductController();
+    private final ProductController iProductController = new ProductController();
 
     public void showMenu() {
         System.out.println("1. Thêm sản phẩm\n" +
