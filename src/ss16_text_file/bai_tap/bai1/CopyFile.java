@@ -6,19 +6,19 @@ import java.util.List;
 
 public class CopyFile {
     public static List<String> readFile(String filePath) {
-        List<String> numbers = new ArrayList<>();
+        List<String> lines = new ArrayList<>();
         try {
             File file = new File(filePath);
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                numbers.add(line);
+                lines.add(line);
             }
             bufferedReader.close();
         } catch (Exception e) {
             System.err.println("Fie không tồn tại or nội dung có lỗi!");
         }
-        return numbers;
+        return lines;
     }
 
     public static void writeFile(String filePath, List<String> strings, boolean flag) {

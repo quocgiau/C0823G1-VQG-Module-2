@@ -33,8 +33,8 @@ public class ReadCountry {
 
     public static void main(String[] args) {
         List<Country> countries = readFile("src/ss16_text_file/bai_tap/bai2/countries.csv");
-        for (Country str : countries){
-            System.out.println(str);
+        for (Country country : countries){
+            System.out.println(country);
         }
     }
 }
