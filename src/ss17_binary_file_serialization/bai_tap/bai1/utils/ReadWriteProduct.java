@@ -37,17 +37,18 @@ public class ReadWriteProduct {
         List<Product> products = new ArrayList<>();
         FileInputStream fileInputStream = null;
         ObjectInputStream objectInputStream = null;
+        Product product;
         try {
             fileInputStream = new FileInputStream(path);
             objectInputStream = new ObjectInputStream(fileInputStream);
             while (fileInputStream.available() > 0) {
-                Product product = (Product) objectInputStream.readObject();
+                product = (Product) objectInputStream.readObject();
                 products.add(product);
             }
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Dữ liệu trống");
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } finally {

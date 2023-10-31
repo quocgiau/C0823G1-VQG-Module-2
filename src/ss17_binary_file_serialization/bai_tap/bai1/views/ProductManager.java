@@ -90,7 +90,7 @@ public class ProductManager {
                         System.out.println("Hẹn gặp lại");
                         System.exit(4);
                     default:
-                        System.out.println("Vui lòng nhập từ 1 đến 3");
+                        System.out.println("Vui lòng nhập từ 1 đến 4");
                 }
             }catch (NumberFormatException e){
                 System.out.println("Vui lòng nhập số");
