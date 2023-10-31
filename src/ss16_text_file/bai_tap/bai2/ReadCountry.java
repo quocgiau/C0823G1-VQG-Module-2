@@ -11,7 +11,7 @@ public class ReadCountry {
     public static List<Country> readFile(String filePath) {
         List<Country> countries = new ArrayList<>();
         Country country;
-        BufferedReader bufferedReader;
+        BufferedReader bufferedReader = null;
         try {
             bufferedReader = new BufferedReader(new FileReader(filePath));
             String line;
@@ -27,6 +27,13 @@ public class ReadCountry {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                assert bufferedReader != null;
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return countries;
     }

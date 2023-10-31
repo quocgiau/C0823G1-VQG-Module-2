@@ -6,31 +6,46 @@ import java.util.List;
 
 public class CopyFile {
     public static List<String> readFile(String filePath) {
+        BufferedReader bufferedReader = null;
         List<String> lines = new ArrayList<>();
         try {
             File file = new File(filePath);
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            bufferedReader = new BufferedReader(new FileReader(file));
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 lines.add(line);
             }
-            bufferedReader.close();
         } catch (Exception e) {
             System.err.println("Fie không tồn tại or nội dung có lỗi!");
+            e.printStackTrace();
+        } finally {
+            try {
+                assert bufferedReader != null;
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return lines;
     }
 
     public static void writeFile(String filePath, List<String> strings, boolean flag) {
+        BufferedWriter bufferedWriter = null;
         try {
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath, flag));
+            bufferedWriter = new BufferedWriter(new FileWriter(filePath, flag));
             for (String str : strings) {
                 bufferedWriter.write(str);
                 bufferedWriter.newLine();
             }
-            bufferedWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                assert bufferedWriter != null;
+                bufferedWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
