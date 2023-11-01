@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface IProductRepository {
     List<Product> getAll();
+
     void add(Product product);
+
     List<Product> search(String name);
 }

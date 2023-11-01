@@ -21,7 +21,7 @@ public class ProductManager {
         String brand = scanner.nextLine();
         System.out.println("Mô tả sản phẩm");
         String des = scanner.nextLine();
-        Product product = new Product(id, name,price, brand, des);
+        Product product = new Product(id, name, price, brand, des);
         return product;
     }
 
@@ -92,7 +92,7 @@ public class ProductManager {
                     default:
                         System.out.println("Vui lòng nhập từ 1 đến 4");
                 }
-            }catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số");
             }
         } while (true);

@@ -8,6 +8,7 @@ import java.util.List;
 
 public class ProductController {
     private IProductService iProductService = new ProductService();
+
     public List<Product> getAll() {
         return iProductService.getAll();
     }
