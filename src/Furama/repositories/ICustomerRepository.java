@@ -1,16 +1,18 @@
 package Furama.repositories;
 
+import Furama.models.Customer;
+
 import java.util.Currency;
 import java.util.List;
 
 public interface ICustomerRepository {
-    List<Currency> getList();
+    List<Customer> getList();
 
-    void add(Currency employee);
+    void add(Customer customer);
 
-    void edit(String id, Currency employee);
+    void edit(String id, Customer customer);
 
     void delete(String id);
 
-    List<Currency> search(String name);
+    List<Customer> search(String name);
 }

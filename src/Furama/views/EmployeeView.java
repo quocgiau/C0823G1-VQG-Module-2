@@ -2,13 +2,14 @@ package Furama.views;
 
 import Furama.controllers.EmployeeController;
 import Furama.models.Employee;
-import ss17_binary_file_serialization.bai_tap.bai1.models.Product;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeView {
     Scanner scanner = new Scanner(System.in);
+    private CheckingInput c = new CheckingInput();
+    private static final String E = "nhân viên";
     private EmployeeController employeeController = new EmployeeController();
     public void showMenu(){
         System.out.println("--------Quản lý nhân viên--------");
@@ -49,22 +50,16 @@ public class EmployeeView {
         }while (true);
     }
     public Employee addEmployee() {
-        int idEmployee = Integer.parseInt(scanner.nextLine());
+        int idEmployee = inputId();
         System.out.println("ID của bạn là: " + idEmployee);
         System.out.println("Nhập mã");
         String code = scanner.nextLine();
-        System.out.println("Nhập họ và tên Employee");
-        String nameEmployee = scanner.nextLine();
-        System.out.println("Nhập birthday Employee");
-        String birthdayEmployee = scanner.nextLine();
-        System.out.println("Chọn giới tính");
-        String gender = scanner.nextLine();
-        System.out.println("Nhập CCCD");
-        int idNumber = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhập SDT ví dụ 0345323724");
-        int phone = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhập email");
-        String email = scanner.nextLine();
+        String nameEmployee = c.inputName(E);
+        String birthdayEmployee = c.inputBirthday(E);
+        String gender = c.chooseGender();
+        int idNumber = c.inputIdCard(E);
+        int phone = c.inputPhone(E);
+        String email = c.inputEmail(E);
         System.out.println("Chọn trình độ học vấn");
         String level = scanner.nextLine();
         System.out.println("Chọn vị trí làm việc");
@@ -82,5 +77,13 @@ public class EmployeeView {
                 System.out.println(employee);
             }
         }
+    }
+    public int inputId() {
+        int count = 0;
+        List<Employee> employeeList = employeeController.getList();
+        for (Employee employee : employeeList) {
+            count = employee.getId();
+        }
+        return count + 1;
     }
 }

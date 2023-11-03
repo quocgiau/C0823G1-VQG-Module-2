@@ -94,7 +94,7 @@ public class Person {
                 ", Tên = '" + name + '\'' +
                 ", Ngày sinh = '" + birthday + '\'' +
                 ", Giới tính = '" + gender + '\'' +
-                ", CMND = " + idCard +
+                ", CCCD = " + idCard +
                 ", SĐT = " + phone +
                 ", email = '" + email + '\'';
     }
