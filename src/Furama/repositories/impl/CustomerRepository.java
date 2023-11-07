@@ -1,6 +1,7 @@
 package Furama.repositories.impl;
 
 import Furama.models.Customer;
+import Furama.models.Employee;
 import Furama.repositories.ICustomerRepository;
 import Furama.utils.ReadAndWrite;
 
@@ -25,18 +26,46 @@ public class CustomerRepository implements ICustomerRepository {
     }
 
     @Override
-    public void edit(String id, Customer employee) {
-
+    public void edit(int id, Customer customer) {
+        List<Customer> customerList = getList();
+        for (int i = 0; i < customerList.size(); i++) {
+            if (customerList.get(i).getId() == id) {
+                customerList.get(i).getCode();
+                customerList.get(i).setName(customer.getName());
+                customerList.get(i).setBirthday(customer.getBirthday());
+                customerList.get(i).setGender(customer.getGender());
+                customerList.get(i).setIdCard(customer.getIdCard());
+                customerList.get(i).setPhone(customer.getPhone());
+                customerList.get(i).setEmail(customer.getEmail());
+                customerList.get(i).setType(customer.getType());
+                customerList.get(i).setAddress(customer.getAddress());
+                ReadAndWrite.writeFile(FILE, convertToString(customerList), false);
+            }
+        }
     }
 
     @Override
-    public void delete(String id) {
-
+    public void delete(int id) {
+        List<Customer> customers = getList();
+        for (Customer customer : customers) {
+            if (customer.getId() == id) {
+                customers.remove(customer);
+                ReadAndWrite.writeFile(FILE, convertToString(customers), false);
+                break;
+            }
+        }
     }
 
     @Override
     public List<Customer> search(String name) {
-        return null;
+        List<Customer> customers = getList();
+        List<Customer> customerList = new ArrayList<>();
+        for (Customer customer : customers) {
+            if (customer.getName().contains(name)) {
+                customerList.add(customer);
+            }
+        }
+        return customerList;
     }
     public List<Customer> convertToObject(List<String> stringList) {
         List<Customer> customerList = new ArrayList<>();

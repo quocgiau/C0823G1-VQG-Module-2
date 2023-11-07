@@ -15,12 +15,12 @@ public class CustomerController {
         iCustomerServices.add(employee);
     }
 
-    public void edit(String id, Customer employee) {
+    public void edit(int id, Customer employee) {
         iCustomerServices.edit(id, employee);
     }
 
 
-    public void delete(String id) {
+    public void delete(int id) {
         iCustomerServices.delete(id);
     }
 

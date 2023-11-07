@@ -17,12 +17,12 @@ public class EmployeeController {
         iEmployeeServices.add(employee);
     }
 
-    public void edit(String id, Employee employee) {
+    public void edit(int id, Employee employee) {
         iEmployeeServices.edit(id, employee);
     }
 
 
-    public void delete(String id) {
+    public void delete(int id) {
         iEmployeeServices.delete(id);
     }
 

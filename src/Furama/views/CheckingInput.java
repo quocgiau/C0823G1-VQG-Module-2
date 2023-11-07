@@ -15,6 +15,7 @@ public class CheckingInput {
     private static final String ID_CARD = "^\\d{9}|\\d{12}$";
     private static final String PHONE = "^0\\d{9,10}$";
     private static final String EMAIL = "^[A-Za-z0-9]+([._%+-][A-Za-z0-9]+)*@[A-Za-z0-9]+([.-][A-Za-z0-9]+)*\\.[A-Za-z]{2,}$";
+    private static final String CODE = "^\\d{4}$";
 
     public static boolean validate(String name) {
         return Pattern.matches(NAME, name);
@@ -24,7 +25,7 @@ public class CheckingInput {
         String name;
         do {
             System.out.println("Nhập tên " + srt);
-            name = scanner.nextLine();
+            name = checkSpace();
             if (validate(name)) {
                 return name;
             } else {
@@ -116,18 +117,58 @@ public class CheckingInput {
             }
         } while (true);
     }
-    public static boolean isValidEmailFormat(String email){
-        return Pattern.matches(EMAIL,email);
+
+    public static boolean isValidEmailFormat(String email) {
+        return Pattern.matches(EMAIL, email);
     }
-    public String inputEmail(String str){
+
+    public String inputEmail(String str) {
         String email;
         do {
             System.out.println("Nhập email " + str);
             email = scanner.nextLine();
-            if (isValidEmailFormat(email)){
+            if (isValidEmailFormat(email)) {
                 return email;
-            }else {
+            } else {
                 System.out.println("Vui lòng nhập đúng định dạng email!");
+            }
+        } while (true);
+    }
+
+    public String checkSpace() {
+        String text;
+        do {
+            text = scanner.nextLine();
+            if ((text.isEmpty())) {
+                System.out.println("Vui lòng không để trống");
+            } else {
+                return text;
+            }
+        } while (true);
+    }
+
+    public boolean decision() {
+        String text = scanner.nextLine();
+        if (text.equals("y")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean fourCode(String number) {
+        return Pattern.matches(CODE, number);
+    }
+
+    public String inputCode(String str, String permanent) {
+        String code;
+        do {
+            System.out.println("Nhập mã " + str);
+            code = scanner.nextLine();
+            if (fourCode(code)){
+                return permanent + code;
+            }else {
+                System.out.println("Vui lòng nhập đúng định dạng 4 chữ số");
             }
         }while (true);
     }

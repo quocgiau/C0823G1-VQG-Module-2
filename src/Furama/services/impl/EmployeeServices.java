@@ -21,12 +21,12 @@ public class EmployeeServices implements IEmployeeServices {
     }
 
     @Override
-    public void edit(String id, Employee employee) {
+    public void edit(int id, Employee employee) {
         iEmployeeRepository.edit(id, employee);
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(int id) {
         iEmployeeRepository.delete(id);
     }
 

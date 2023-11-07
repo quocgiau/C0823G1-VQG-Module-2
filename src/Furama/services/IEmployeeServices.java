@@ -9,9 +9,9 @@ public interface IEmployeeServices {
 
     void add(Employee employee);
 
-    void edit(String id, Employee employee);
+    void edit(int id, Employee employee);
 
-    void delete(String id);
+    void delete(int id);
 
     List<Employee> search(String name);
 }

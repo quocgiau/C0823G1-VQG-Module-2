@@ -27,18 +27,47 @@ public class EmployeeRepository implements IEmployeeRepository {
     }
 
     @Override
-    public void edit(String id, Employee employee) {
-
+    public void edit(int id, Employee employee) {
+        List<Employee> employeeList = getList();
+        for (int i = 0; i < employeeList.size(); i++) {
+            if (employeeList.get(i).getId() == id) {
+                employeeList.get(i).getCode();
+                employeeList.get(i).setName(employee.getName());
+                employeeList.get(i).setBirthday(employee.getBirthday());
+                employeeList.get(i).setGender(employee.getGender());
+                employeeList.get(i).setIdCard(employee.getIdCard());
+                employeeList.get(i).setPhone(employee.getPhone());
+                employeeList.get(i).setEmail(employee.getEmail());
+                employeeList.get(i).setLevel(employee.getLevel());
+                employeeList.get(i).setLocation(employee.getLocation());
+                employeeList.get(i).setWage(employee.getWage());
+                ReadAndWrite.writeFile(FILE, convertToString(employeeList), false);
+            }
+        }
     }
 
     @Override
-    public void delete(String id) {
-
+    public void delete(int id) {
+        List<Employee> employees = getList();
+        for (Employee employee : employees) {
+            if (employee.getId() == id) {
+                employees.remove(employee);
+                ReadAndWrite.writeFile(FILE, convertToString(employees), false);
+                break;
+            }
+        }
     }
 
     @Override
     public List<Employee> search(String name) {
-        return null;
+        List<Employee> employeeList = getList();
+        List<Employee> employeeList1 = new ArrayList<>();
+        for (Employee employee : employeeList) {
+            if (employee.getName().contains(name)) {
+                employeeList1.add(employee);
+            }
+        }
+        return employeeList1;
     }
 
     public List<Employee> convertToObject(List<String> stringList) {

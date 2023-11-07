@@ -20,12 +20,12 @@ public class CustomerServices implements ICustomerServices {
     }
 
     @Override
-    public void edit(String id, Customer customer) {
+    public void edit(int id, Customer customer) {
         iCustomerRepository.edit(id,customer);
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(int id) {
         iCustomerRepository.delete(id);
     }
 

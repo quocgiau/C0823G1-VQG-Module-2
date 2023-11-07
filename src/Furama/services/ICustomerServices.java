@@ -9,9 +9,9 @@ public interface ICustomerServices {
 
     void add(Customer customer);
 
-    void edit(String id, Customer customer);
+    void edit(int id, Customer customer);
 
-    void delete(String id);
+    void delete(int id);
 
     List<Customer> search(String name);
 }
