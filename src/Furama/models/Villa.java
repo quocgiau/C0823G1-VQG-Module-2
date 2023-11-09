@@ -2,13 +2,13 @@ package Furama.models;
 
 public class Villa extends Facility{
     private String standard;
-    private String areaPool;
+    private int areaPool;
     private int floor;
 
     public Villa() {
     }
 
-    public Villa(int id, String code, String name, String area, int price, int people, String type, String standard, String areaPool, int floor) {
+    public Villa(int id, String code, String name, int area, int price, int people, String type, String standard, int areaPool, int floor) {
         super(id, code, name, area, price, people, type);
         this.standard = standard;
         this.areaPool = areaPool;
@@ -23,11 +23,11 @@ public class Villa extends Facility{
         this.standard = standard;
     }
 
-    public String getAreaPool() {
+    public int getAreaPool() {
         return areaPool;
     }
 
-    public void setAreaPool(String areaPool) {
+    public void setAreaPool(int areaPool) {
         this.areaPool = areaPool;
     }
 

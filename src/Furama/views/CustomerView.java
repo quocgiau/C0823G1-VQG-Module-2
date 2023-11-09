@@ -2,7 +2,6 @@ package Furama.views;
 
 import Furama.controllers.CustomerController;
 import Furama.models.Customer;
-import Furama.models.Employee;
 
 import java.util.List;
 import java.util.Scanner;
@@ -13,7 +12,8 @@ public class CustomerView {
     private static final String NEW_NAME = "khách hàng mới";
     private CustomerController controller = new CustomerController();
     Scanner scanner = new Scanner(System.in);
-    public void showMenu(){
+
+    public void showMenu() {
         System.out.println("-------Quản lý khách hàng-----");
         System.out.println("1. Hiển thị danh sách khách hàng");
         System.out.println("2. Thêm khách hàng mới");
@@ -22,7 +22,8 @@ public class CustomerView {
         System.out.println("5. Tìm kiếm theo tên khách hàng");
         System.out.println("6. Quay lại menu chính");
     }
-    public void menuCustomer(){
+
+    public void menuCustomer() {
         int choice;
         do {
             try {
@@ -49,15 +50,16 @@ public class CustomerView {
                     default:
                         System.out.println("Vui lòng nhập các số từ 1 đến 6");
                 }
-            }catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.out.println("Vui lòng chỉ nhập số");
             }
-        }while (true);
+        } while (true);
     }
+
     public void addCustomer() {
         int idEmployee = inputId();
         System.out.println("ID của bạn là: " + idEmployee);
-        String code = c.inputCode(C,"KH-");
+        String code = c.inputCode(C, "KH-");
         String nameEmployee = c.inputName(C);
         String birthdayEmployee = c.inputBirthday(C);
         String gender = c.chooseGender();
@@ -71,6 +73,7 @@ public class CustomerView {
         controller.add(customer);
         System.out.println("Thêm mới khách hàng thành công");
     }
+
     public void display() {
         List<Customer> lists = controller.getList();
         if (lists.isEmpty()) {
@@ -81,6 +84,7 @@ public class CustomerView {
             }
         }
     }
+
     public int inputId() {
         int count = 0;
         List<Customer> customerList = controller.getList();
@@ -89,7 +93,8 @@ public class CustomerView {
         }
         return count + 1;
     }
-    public String customerType(){
+
+    public String customerType() {
         System.out.println("Chọn loại khách hàng");
         int choice;
         do {
@@ -119,7 +124,8 @@ public class CustomerView {
             }
         } while (true);
     }
-    public void outputNameSearch(){
+
+    public void outputNameSearch() {
         System.out.println("Nhập tên khách hàng bạn cần tìm");
         String name = c.checkSpace();
         List<Customer> employeeList = controller.search(name);
@@ -131,6 +137,7 @@ public class CustomerView {
             }
         }
     }
+
     public int idDeleteCustomer() {
         List<Customer> customerList = controller.getList();
         System.out.println("Nhập Id khách hàng muốn xóa");
@@ -151,6 +158,7 @@ public class CustomerView {
             System.out.println("Id không tồn tại. Vui lòng nhập lại!");
         } while (true);
     }
+
     public int idEditCustomer() {
         List<Customer> customerList = controller.getList();
         System.out.println("Nhập Id khách hàng muốn sửa");
@@ -175,7 +183,8 @@ public class CustomerView {
             }
         } while (true);
     }
-    public void editCustomer(){
+
+    public void editCustomer() {
         int id = idEditCustomer();
         System.out.println("Bắt đầu nhập thông tin mới cho khách hàng");
         String code = "Em không biết viết gì để giữ nguyên mã";
@@ -189,11 +198,11 @@ public class CustomerView {
         System.out.println("Nhập địa chỉ");
         String address = scanner.nextLine();
         System.out.println("Bạn có muốn thay đổi thông tin khách hàng này không? (y / n)");
-        if (c.decision()){
+        if (c.decision()) {
             Customer customer = new Customer(id, code, name, birthday, gender, idCard, phone, email, type, address);
-            controller.edit(id,customer);
+            controller.edit(id, customer);
             System.out.println("Bạn đã sửa thông tin khách hàng thành công");
-        }else {
+        } else {
             System.out.println("Bạn không sửa thông tin");
         }
     }

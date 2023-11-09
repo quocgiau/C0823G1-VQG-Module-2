@@ -172,4 +172,87 @@ public class CheckingInput {
             }
         }while (true);
     }
+    public int inputArea(String str){
+        System.out.println("Nhập diện tích " + str);
+        int area;
+        do {
+            try {
+                area = Integer.parseInt(scanner.nextLine());
+                if (area >= 30) {
+                    return area;
+                } else {
+                    System.out.println("Vui lòng nhập diện tích lớn hơn 30m2");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số");
+            } catch (Exception e) {
+                System.out.println("Lỗi không xác định");
+            }
+        } while (true);
+    }
+    public int inputPrice(){
+        System.out.println("Nhập chi phí thuê");
+        int price;
+        do {
+            try {
+                price = Integer.parseInt(scanner.nextLine());
+                if (price > 1) {
+                    return price;
+                } else {
+                    System.out.println("Vui lòng nhập số dương");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số");
+            } catch (Exception e) {
+                System.out.println("Lỗi không xác định");
+            }
+        } while (true);
+    }
+    public int inputPeople(){
+        System.out.println("Nhập số lượng người lưu trú (Dưới 20 người)");
+        int people;
+        do {
+            try {
+                people = Integer.parseInt(scanner.nextLine());
+                if (people > 1 && people <= 20) {
+                    return people;
+                } else {
+                    System.out.println("Vui lòng nhập lớn hơn 0 và bé hơn 20");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số");
+            } catch (Exception e) {
+                System.out.println("Lỗi không xác định");
+            }
+        } while (true);
+    }
+    public String choiceType(){
+        System.out.println("Chọn kiểu thuê");
+        int choice;
+        do {
+            try {
+                System.out.println("1. Thuê theo năm");
+                System.out.println("2. Thuê theo tháng");
+                System.out.println("3. Thuê theo ngày");
+                System.out.println("4. Thuê theo giờ");
+                choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case 1:
+                        return "thuê theo năm";
+                    case 2:
+                        return "thuê theo tháng";
+                    case 3:
+                        return "thuê theo ngày";
+                    case 4:
+                        return "thuê theo giờ";
+                    default:
+                        System.out.println("Nhập từ 1 - 4");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số");
+            } catch (Exception e) {
+                System.out.println("Lỗi không xác định");
+            }
+        } while (true);
+    }
 }

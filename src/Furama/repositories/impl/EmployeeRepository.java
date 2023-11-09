@@ -20,10 +20,17 @@ public class EmployeeRepository implements IEmployeeRepository {
     }
 
     @Override
-    public void add(Employee employee) {
+    public boolean add(Employee employee) {
+        List<Employee> employees = getList();
+        for (Employee employee1 : employees) {
+            if (employee.getId() == employee1.getId()) {
+                return false;
+            }
+        }
         List<Employee> employeeList = new ArrayList<>();
         employeeList.add(employee);
         ReadAndWrite.writeFile(FILE, convertToString(employeeList), true);
+        return true;
     }
 
     @Override

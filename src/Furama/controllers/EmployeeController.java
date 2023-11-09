@@ -13,8 +13,8 @@ public class EmployeeController {
         return iEmployeeServices.getList();
     }
 
-    public void add(Employee employee) {
-        iEmployeeServices.add(employee);
+    public boolean add(Employee employee) {
+       return iEmployeeServices.add(employee);
     }
 
     public void edit(int id, Employee employee) {

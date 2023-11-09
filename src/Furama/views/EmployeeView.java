@@ -34,7 +34,12 @@ public class EmployeeView {
                         display();
                         break;
                     case 2:
-                        addEmployee();
+                        if (employeeController.add(addEmployee())) {
+                            System.out.println("Bạn đã thêm mới nhân viên thành công");
+                        } else {
+                            System.out.println("Sảy ra lỗi. Vui lòng thử lại");
+                            return;
+                        }
                         break;
                     case 3:
                         editEmployee();
@@ -52,14 +57,16 @@ public class EmployeeView {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng chỉ nhập số");
+            }catch (Exception e){
+                System.out.println("Đã xảy ra lỗi");
             }
         } while (true);
     }
 
-    public void addEmployee() {
+    public Employee addEmployee() {
         int idEmployee = inputId();
         System.out.println("ID của bạn là: " + idEmployee);
-        String code = c.inputCode(E,"NV-");
+        String code = c.inputCode(E, "NV-");
         String nameEmployee = c.inputName(E);
         String birthdayEmployee = c.inputBirthday(E);
         String gender = c.chooseGender();
@@ -69,9 +76,8 @@ public class EmployeeView {
         String level = chooseLevel();
         String location = selectLocation();
         int wage = inputWage(location);
-        System.out.println("Bạn đã thêm mới nhân viên thành công");
         Employee employee = new Employee(idEmployee, code, nameEmployee, birthdayEmployee, gender, idNumber, phone, email, level, location, wage);
-        employeeController.add(employee);
+        return employee;
     }
 
     public void display() {
@@ -228,7 +234,8 @@ public class EmployeeView {
             }
         } while (true);
     }
-    public void editEmployee(){
+
+    public void editEmployee() {
         int id = idEditEmployee();
         System.out.println("Bắt đầu nhập thông tin mới cho nhân viên");
         String code = "Em không biết viết gì để giữ nguyên mã";
@@ -243,11 +250,11 @@ public class EmployeeView {
         int wage = inputWage(location);
 
         System.out.println("Bạn có muốn thay đổi thông tin nhân viên này không? (y / n)");
-        if (c.decision()){
+        if (c.decision()) {
             Employee employee = new Employee(id, code, name, birthday, gender, idCard, phone, email, level, location, wage);
-            employeeController.edit(id,employee);
+            employeeController.edit(id, employee);
             System.out.println("Bạn đã sửa thông tin nhân viên thành công");
-        }else {
+        } else {
             System.out.println("Bạn không sửa thông tin");
         }
     }

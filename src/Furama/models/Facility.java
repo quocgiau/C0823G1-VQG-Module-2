@@ -4,7 +4,7 @@ public class Facility {
     private int id;
     private String code;
     private String name;
-    private String area;
+    private int area;
     private int price;
     private int people;
     private String type;
@@ -12,7 +12,7 @@ public class Facility {
     public Facility() {
     }
 
-    public Facility(int id, String code, String name, String area, int price, int people, String type) {
+    public Facility(int id, String code, String name, int area, int price, int people, String type) {
         this.id = id;
         this.code = code;
         this.name = name;
@@ -46,11 +46,11 @@ public class Facility {
         this.name = name;
     }
 
-    public String getArea() {
+    public int getArea() {
         return area;
     }
 
-    public void setArea(String area) {
+    public void setArea(int area) {
         this.area = area;
     }
 
